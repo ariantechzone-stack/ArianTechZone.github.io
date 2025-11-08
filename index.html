@@ -2,360 +2,433 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ArianTechZone — Portfolio</title>
-  <meta name="description" content="ArianTechZone — Full-Stack Developer (portfolio placeholder)" />
+  <meta name="description" content="ArianTechZone — Full-Stack Developer Portfolio" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="favicon.png" />
+
   <style>
-    /* ---------- Simple reset ---------- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html,body { height: 100%; }
+    /* --- RESET & BASE --- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f9fafb;
       color: #111827;
-      background: #ffffff;
-      line-height: 1.5;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding: 24px;
+      line-height: 1.6;
+      padding: 0 20px;
+      -webkit-font-smoothing: antialiased;
+      transition: background .3s, color .3s;
     }
 
-    /* ---------- Layout ---------- */
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- CONTAINER --- */
     .container {
-      max-width: 980px;
+      max-width: 1000px;
       margin: 0 auto;
+      padding: 40px 0;
     }
 
+    /* --- HEADER --- */
     header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
     }
 
     .brand {
-      display:flex;
-      gap:12px;
-      align-items:center;
-      text-decoration:none;
-      color:inherit;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
     }
 
     .logo {
-      width:48px; height:48px;
-      display:grid;
-      place-items:center;
-      border-radius:10px;
-      background: linear-gradient(135deg,#eef2ff,#e6f0ff);
-      box-shadow: 0 6px 18px rgba(50,60,80,0.06);
-      font-weight:700;
-      color:#0f172a;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 16px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(99,102,241,0.25);
     }
 
-    nav { display:flex; gap:14px; align-items:center; }
+    nav {
+      display: flex;
+      gap: 18px;
+    }
+
     nav a {
-      text-decoration:none;
-      color: #374151;
-      font-weight:600;
-      padding:8px 10px;
-      border-radius:8px;
-      transition: all .15s ease;
-      font-size:14px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all .2s ease;
     }
-    nav a:hover { background:#f3f4f6; color:#111827; }
 
-    /* ---------- Hero ---------- */
+    nav a:hover, nav a.active {
+      background: #e0e7ff;
+      color: #1e3a8a;
+    }
+
+    /* --- HERO --- */
     .hero {
-      display:grid;
+      display: grid;
       grid-template-columns: 1fr 320px;
-      gap:32px;
-      align-items:center;
-      padding:28px;
-      border-radius:14px;
-      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-      box-shadow: 0 6px 28px rgba(20,30,60,0.04);
-      margin-bottom: 28px;
+      align-items: center;
+      gap: 40px;
+      background: linear-gradient(135deg, #ffffff, #f0f4ff);
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(30,41,59,0.08);
+      margin-bottom: 60px;
     }
 
     .hero h1 {
-      font-size: clamp(26px, 4vw, 36px);
-      margin-bottom:8px;
-      color:#0b1220;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
     }
-    .hero p.lead {
-      color:#475569;
-      margin-bottom:16px;
+
+    .hero p {
+      color: #475569;
+      margin-bottom: 20px;
     }
-    .cta-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
     .btn {
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      text-decoration:none;
-      font-size:14px;
-      cursor:pointer;
-    }
-    .btn-primary {
-      background:#0f172a;
-      color:#fff;
-      box-shadow: 0 6px 20px rgba(15,23,42,0.08);
-    }
-    .btn-ghost {
-      background:transparent;
-      color:#0f172a;
-      border: 1px solid #e6e9ef;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: all .25s ease;
+      font-size: 15px;
     }
 
-    /* ---------- Profile card (tech-style SVG) ---------- */
-    .profile {
-      text-align:center;
-      padding:18px;
-      border-radius:12px;
-      background: linear-gradient(180deg,#f8fafc,#ffffff);
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(99,102,241,0.25);
     }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99,102,241,0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      background: #fff;
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    /* --- PROFILE CARD --- */
+    .profile {
+      text-align: center;
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+      transition: all .3s ease;
+    }
+
+    .profile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 44px rgba(0,0,0,0.06);
+    }
+
     .avatar {
-      width:160px;
-      height:160px;
-      margin: 0 auto 12px;
-      border-radius:12px;
-      display:grid; place-items:center;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 14px;
+      border-radius: 12px;
+      overflow: hidden;
       background: linear-gradient(135deg,#eef2ff,#e6f0ff);
-      box-shadow: 0 10px 30px rgba(10,20,40,0.06);
-      overflow:hidden;
     }
 
     .name {
-      font-weight:700;
-      margin-bottom:6px;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 4px;
     }
-    .role { color:#6b7280; font-size:14px; margin-bottom:8px; }
 
-    /* ---------- Sections ---------- */
-    section { margin-bottom:28px; }
+    .role {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    /* --- SECTIONS --- */
+    section {
+      margin-bottom: 60px;
+    }
+
     h2 {
-      font-size:18px;
-      margin-bottom:12px;
-      color:#0b1220;
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+      position: relative;
     }
 
-    .about p { color:#475569; }
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+
+    .about p {
+      color: #475569;
+      max-width: 720px;
+    }
+
     .grid-3 {
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
+
     .card {
-      padding:14px;
-      border-radius:12px;
-      background:#fff;
-      border:1px solid #eef2f6;
-      box-shadow: 0 6px 30px rgba(10,20,40,0.03);
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+      transition: all .3s ease;
     }
-    .project-title { font-weight:700; margin-bottom:6px; }
-    .project-desc { color:#475569; font-size:14px; margin-bottom:8px; }
-    .project-links a { font-size:13px; text-decoration:none; color:#0f172a; margin-right:8px; }
 
-    .skills { display:flex; gap:8px; flex-wrap:wrap; }
-    .skill { padding:8px 10px; border-radius:10px; font-weight:700; background:#f8fafc; color:#0b1220; border:1px solid #eef2f6; }
-
-    /* ---------- Contact ---------- */
-    .contact-row { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
-    .email { color:#0b1220; font-weight:700; text-decoration:none; }
-
-    footer { margin-top:30px; color:#94a3b8; font-size:13px; text-align:center; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width:920px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.06);
     }
-    @media (max-width:560px) {
-      nav { display:none; }
-      .grid-3 { grid-template-columns: 1fr; }
-      header { gap:10px; }
+
+    .project-title {
+      font-weight: 700;
+      margin-bottom: 6px;
     }
-    /* small helper */
-    .muted { color:#64748b; font-size:13px; }
+
+    .project-desc {
+      color: #475569;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .project-links a {
+      font-size: 13px;
+      color: #3b82f6;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 12px;
+      background: #eff6ff;
+      border-radius: 8px;
+      font-weight: 600;
+      color: #1e3a8a;
+      border: 1px solid #dbeafe;
+    }
+
+    /* --- CONTACT --- */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      nav { display: none; }
+    }
+
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- HEADER -->
     <header>
-      <a class="brand" href="#home" onclick="scrollToId(event,'home')">
+      <div class="brand" onclick="scrollToId('home')">
         <div class="logo">ATZ</div>
         <div>
-          <div style="font-weight:800">ArianTechZone</div>
-          <div class="muted" style="font-size:12px">Light • Minimal • Portfolio</div>
+          <strong>ArianTechZone</strong><br>
+          <small style="color:#64748b;font-size:12px;">Full-Stack Developer</small>
         </div>
-      </a>
-
-      <nav aria-label="Main navigation">
-        <a href="#about" onclick="scrollToId(event,'about')">About</a>
-        <a href="#projects" onclick="scrollToId(event,'projects')">Projects</a>
-        <a href="#skills" onclick="scrollToId(event,'skills')">Skills</a>
-        <a href="#contact" onclick="scrollToId(event,'contact')">Contact</a>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <!-- HERO -->
-    <main id="home" class="hero" role="main">
+    <section id="home" class="hero">
       <div>
-        <h1>Hi — I’m <span style="color:#0f172a">ArianTechZone</span></h1>
-        <p class="lead">I build clean, responsive websites and small web apps. Learning full-stack development — HTML, CSS, JavaScript, React, and Node.js.</p>
+        <h1>Hey, I'm <span style="color:#3b82f6;">ArianTechZone</span></h1>
+        <p>I design and build clean, responsive web apps using HTML, CSS, JavaScript, React, and Node.js. I focus on simple, elegant UI and practical full-stack projects.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#projects" onclick="scrollToId(event,'projects')">See Projects</a>
-          <a class="btn btn-ghost" href="#contact" onclick="scrollToId(event,'contact')">Get in touch</a>
-        </div>
-        <div style="margin-top:16px;color:#64748b;font-size:13px">
-          Quick note: replace the placeholder text and images with your own when you're ready.
+          <a href="#projects" class="btn btn-primary">See My Work</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
         </div>
       </div>
 
-      <!-- Profile card with tech-style SVG placeholder -->
-      <aside class="profile" aria-label="Profile">
-        <div class="avatar" title="Profile placeholder (replace with your photo)">
-          <!-- Inline tech-style SVG illustration as placeholder -->
-          <svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tech placeholder">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stop-color="#eef2ff"/>
-                <stop offset="1" stop-color="#e6f0ff"/>
-              </linearGradient>
-              <linearGradient id="g2" x1="0" x2="1">
-                <stop offset="0" stop-color="#c7d2fe"/>
-                <stop offset="1" stop-color="#a5b4fc"/>
-              </linearGradient>
-            </defs>
-            <rect width="200" height="200" rx="18" fill="url(#g1)"/>
-            <g transform="translate(28,28)" fill="none" stroke="#0f172a" stroke-opacity="0.06" stroke-width="2">
-              <rect width="144" height="144" rx="12" fill="none"/>
-              <path d="M10 44h124" stroke="#0f172a" stroke-opacity="0.04"/>
-              <path d="M10 84h124" stroke="#0f172a" stroke-opacity="0.04"/>
-            </g>
-            <circle cx="100" cy="76" r="28" fill="url(#g2)" opacity="0.95"/>
-            <rect x="68" y="120" width="64" height="12" rx="6" fill="#f1f5f9"/>
-            <rect x="56" y="140" width="88" height="8" rx="4" fill="#f8fafc"/>
-          </svg>
+      <aside class="profile">
+        <div class="avatar">
+          <img src="https://via.placeholder.com/160x160.png?text=Your+Photo" alt="ArianTechZone portrait">
         </div>
         <div class="name">ArianTechZone</div>
-        <div class="role">Aspiring Full-Stack Developer</div>
-        <div style="font-size:13px;color:#64748b;margin-bottom:10px">Based in India • Open to freelance & practice projects</div>
-        <div style="display:flex;gap:8px;justify-content:center">
-          <a class="btn btn-primary" href="#contact" onclick="scrollToId(event,'contact')">Contact</a>
-          <a class="btn btn-ghost" href="#projects" onclick="scrollToId(event,'projects')">Projects</a>
+        <div class="role">Full-Stack Developer</div>
+        <div style="font-size:13px;color:#64748b;margin-bottom:10px;">Based in India • Open for projects</div>
+        <div style="display:flex;gap:8px;justify-content:center;">
+          <a class="btn btn-primary" href="#contact">Contact</a>
+          <a class="btn btn-outline" href="#projects">Projects</a>
         </div>
       </aside>
-    </main>
+    </section>
 
     <!-- ABOUT -->
-    <section id="about" class="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <p>Hi — I’m ArianTechZone. I’m learning web development and building small, useful projects to grow my skills. This portfolio is a starting point to showcase sample projects and the progress I make. I enjoy clean UI, simple code, and solving real problems with web tools.</p>
+    <section id="about" class="about">
+      <h2>About</h2>
+      <p>I’m ArianTechZone — a developer who loves creating practical, fast, and aesthetic web apps. I’m learning full-stack development through real projects that solve problems and teach me new tools.</p>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
+    <section id="projects">
+      <h2>Projects</h2>
       <div class="grid-3">
-        <article class="card" aria-labelledby="p1">
-          <div id="p1" class="project-title">Portfolio Website</div>
-          <div class="project-desc">A light, minimal single-file portfolio (this page). HTML, CSS, and small JS for smooth scrolling.</div>
+        <div class="card">
+          <div class="project-title">Portfolio Website</div>
+          <div class="project-desc">A clean personal portfolio built with HTML, CSS, and JavaScript — responsive and lightweight.</div>
           <div class="project-links">
-            <a href="#" onclick="alert('Replace with your live link or GitHub repo')">Live</a>
-            <a href="#" onclick="alert('Replace with your GitHub link')">Code</a>
+            <a href="#">Live</a>
+            <a href="#">Code</a>
           </div>
-        </article>
-
-        <article class="card" aria-labelledby="p2">
-          <div id="p2" class="project-title">Todo App</div>
-          <div class="project-desc">A simple todo list that stores tasks in the browser. Great practice for DOM and state handling.</div>
+        </div>
+        <div class="card">
+          <div class="project-title">Todo App</div>
+          <div class="project-desc">A browser-based task manager that saves todos locally. Practice in DOM manipulation and state handling.</div>
           <div class="project-links">
-            <a href="#" onclick="alert('Placeholder')">Live</a>
-            <a href="#" onclick="alert('Placeholder')">Code</a>
+            <a href="#">Live</a>
+            <a href="#">Code</a>
           </div>
-        </article>
-
-        <article class="card" aria-labelledby="p3">
-          <div id="p3" class="project-title">Weather App</div>
-          <div class="project-desc">Front-end app that fetches weather data from an API and displays current conditions and forecast.</div>
+        </div>
+        <div class="card">
+          <div class="project-title">Weather App</div>
+          <div class="project-desc">Simple front-end weather app using OpenWeather API to show real-time conditions and forecast.</div>
           <div class="project-links">
-            <a href="#" onclick="alert('Placeholder')">Live</a>
-            <a href="#" onclick="alert('Placeholder')">Code</a>
+            <a href="#">Live</a>
+            <a href="#">Code</a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
-      <div class="skills" role="list">
-        <span class="skill" role="listitem">HTML</span>
-        <span class="skill" role="listitem">CSS</span>
-        <span class="skill" role="listitem">JavaScript</span>
-        <span class="skill" role="listitem">React (learning)</span>
-        <span class="skill" role="listitem">Node.js (learning)</span>
-        <span class="skill" role="listitem">Git & GitHub</span>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">React</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Git</span>
+        <span class="skill">GitHub</span>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <div class="card contact-row" style="align-items:center;">
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card contact-row">
         <div>
-          <div style="font-weight:800">Email</div>
-          <a class="email" href="mailto:ariantechzone@gmail.com">ariantechzone@gmail.com</a>
-          <div class="muted" style="margin-top:8px">Or reach out on GitHub / LinkedIn (links to add later).</div>
+          <div style="font-weight:700;">Email</div>
+          <a href="mailto:ariantechzone@gmail.com">ariantechzone@gmail.com</a>
+          <p style="color:#64748b;font-size:13px;margin-top:6px;">Or find me on GitHub / LinkedIn soon!</p>
         </div>
 
-        <div style="margin-left:auto;">
-          <div style="font-weight:700; margin-bottom:6px">Quick message</div>
-          <form onsubmit="handleContact(event)" style="display:flex;flex-direction:column;gap:8px;min-width:240px;">
-            <input id="name" required placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid #eef2f6" />
-            <input id="email" required placeholder="Your email" style="padding:10px;border-radius:8px;border:1px solid #eef2f6" />
-            <textarea id="message" required placeholder="Short message" rows="3" style="padding:10px;border-radius:8px;border:1px solid #eef2f6"></textarea>
-            <button class="btn btn-primary" type="submit">Send (opens email)</button>
-          </form>
-        </div>
+        <form onsubmit="handleContact(event)" style="flex:1;min-width:260px;">
+          <input id="name" placeholder="Your name" required>
+          <input id="email" placeholder="Your email" required>
+          <textarea id="message" rows="3" placeholder="Your message" required></textarea>
+          <button class="btn btn-primary" type="submit" style="margin-top:8px;">Send Message</button>
+        </form>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-      Built by ArianTechZone • Light & Minimal portfolio — replace this content with your own.
+      © 2025 ArianTechZone • Crafted with ❤️ using pure HTML & CSS
     </footer>
+
   </div>
 
   <script>
-    /* Smooth scroll helper */
-    function scrollToId(e, id) {
-      if (e) e.preventDefault();
-      const el = document.getElementById(id);
-      if (!el) return;
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 20, behavior: 'smooth' });
+    function scrollToId(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    /* Simple contact form behaviour:
-       Instead of sending to a server (you don't have one yet),
-       it opens the user's email client with a prefilled mailto link. */
     function handleContact(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent('Portfolio Contact from ' + name);
-      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
-      const to = 'ariantechzone@gmail.com';
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const msg = message.value.trim();
+      const mail = `mailto:ariantechzone@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg + '\\n\\n' + email)}`;
+      window.location.href = mail;
     }
 
-    /* Small accessibility: focus outline on keyboard nav */
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Tab') document.body.classList.add('show-focus');
-    });
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const message = document.getElementById('message');
   </script>
 </body>
 </html>
+
+
 
