@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ArianTechZone — Portfolio</title>
+  <meta name="description" content="ArianTechZone — Full-Stack Developer (portfolio placeholder)" />
+  <style>
+    /* ---------- Simple reset ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #111827;
+      background: #ffffff;
+      line-height: 1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding: 24px;
+    }
+
+    /* ---------- Layout ---------- */
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .logo {
+      width:48px; height:48px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background: linear-gradient(135deg,#eef2ff,#e6f0ff);
+      box-shadow: 0 6px 18px rgba(50,60,80,0.06);
+      font-weight:700;
+      color:#0f172a;
+    }
+
+    nav { display:flex; gap:14px; align-items:center; }
+    nav a {
+      text-decoration:none;
+      color: #374151;
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:8px;
+      transition: all .15s ease;
+      font-size:14px;
+    }
+    nav a:hover { background:#f3f4f6; color:#111827; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:32px;
+      align-items:center;
+      padding:28px;
+      border-radius:14px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      box-shadow: 0 6px 28px rgba(20,30,60,0.04);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom:8px;
+      color:#0b1220;
+    }
+    .hero p.lead {
+      color:#475569;
+      margin-bottom:16px;
+    }
+    .cta-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    .btn {
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      font-size:14px;
+      cursor:pointer;
+    }
+    .btn-primary {
+      background:#0f172a;
+      color:#fff;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.08);
+    }
+    .btn-ghost {
+      background:transparent;
+      color:#0f172a;
+      border: 1px solid #e6e9ef;
+    }
+
+    /* ---------- Profile card (tech-style SVG) ---------- */
+    .profile {
+      text-align:center;
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(180deg,#f8fafc,#ffffff);
+    }
+    .avatar {
+      width:160px;
+      height:160px;
+      margin: 0 auto 12px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg,#eef2ff,#e6f0ff);
+      box-shadow: 0 10px 30px rgba(10,20,40,0.06);
+      overflow:hidden;
+    }
+
+    .name {
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .role { color:#6b7280; font-size:14px; margin-bottom:8px; }
+
+    /* ---------- Sections ---------- */
+    section { margin-bottom:28px; }
+    h2 {
+      font-size:18px;
+      margin-bottom:12px;
+      color:#0b1220;
+    }
+
+    .about p { color:#475569; }
+    .grid-3 {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card {
+      padding:14px;
+      border-radius:12px;
+      background:#fff;
+      border:1px solid #eef2f6;
+      box-shadow: 0 6px 30px rgba(10,20,40,0.03);
+    }
+    .project-title { font-weight:700; margin-bottom:6px; }
+    .project-desc { color:#475569; font-size:14px; margin-bottom:8px; }
+    .project-links a { font-size:13px; text-decoration:none; color:#0f172a; margin-right:8px; }
+
+    .skills { display:flex; gap:8px; flex-wrap:wrap; }
+    .skill { padding:8px 10px; border-radius:10px; font-weight:700; background:#f8fafc; color:#0b1220; border:1px solid #eef2f6; }
+
+    /* ---------- Contact ---------- */
+    .contact-row { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+    .email { color:#0b1220; font-weight:700; text-decoration:none; }
+
+    footer { margin-top:30px; color:#94a3b8; font-size:13px; text-align:center; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:920px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width:560px) {
+      nav { display:none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      header { gap:10px; }
+    }
+    /* small helper */
+    .muted { color:#64748b; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#home" onclick="scrollToId(event,'home')">
+        <div class="logo">ATZ</div>
+        <div>
+          <div style="font-weight:800">ArianTechZone</div>
+          <div class="muted" style="font-size:12px">Light • Minimal • Portfolio</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#about" onclick="scrollToId(event,'about')">About</a>
+        <a href="#projects" onclick="scrollToId(event,'projects')">Projects</a>
+        <a href="#skills" onclick="scrollToId(event,'skills')">Skills</a>
+        <a href="#contact" onclick="scrollToId(event,'contact')">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="hero" role="main">
+      <div>
+        <h1>Hi — I’m <span style="color:#0f172a">ArianTechZone</span></h1>
+        <p class="lead">I build clean, responsive websites and small web apps. Learning full-stack development — HTML, CSS, JavaScript, React, and Node.js.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects" onclick="scrollToId(event,'projects')">See Projects</a>
+          <a class="btn btn-ghost" href="#contact" onclick="scrollToId(event,'contact')">Get in touch</a>
+        </div>
+        <div style="margin-top:16px;color:#64748b;font-size:13px">
+          Quick note: replace the placeholder text and images with your own when you're ready.
+        </div>
+      </div>
+
+      <!-- Profile card with tech-style SVG placeholder -->
+      <aside class="profile" aria-label="Profile">
+        <div class="avatar" title="Profile placeholder (replace with your photo)">
+          <!-- Inline tech-style SVG illustration as placeholder -->
+          <svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tech placeholder">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#eef2ff"/>
+                <stop offset="1" stop-color="#e6f0ff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0" stop-color="#c7d2fe"/>
+                <stop offset="1" stop-color="#a5b4fc"/>
+              </linearGradient>
+            </defs>
+            <rect width="200" height="200" rx="18" fill="url(#g1)"/>
+            <g transform="translate(28,28)" fill="none" stroke="#0f172a" stroke-opacity="0.06" stroke-width="2">
+              <rect width="144" height="144" rx="12" fill="none"/>
+              <path d="M10 44h124" stroke="#0f172a" stroke-opacity="0.04"/>
+              <path d="M10 84h124" stroke="#0f172a" stroke-opacity="0.04"/>
+            </g>
+            <circle cx="100" cy="76" r="28" fill="url(#g2)" opacity="0.95"/>
+            <rect x="68" y="120" width="64" height="12" rx="6" fill="#f1f5f9"/>
+            <rect x="56" y="140" width="88" height="8" rx="4" fill="#f8fafc"/>
+          </svg>
+        </div>
+        <div class="name">ArianTechZone</div>
+        <div class="role">Aspiring Full-Stack Developer</div>
+        <div style="font-size:13px;color:#64748b;margin-bottom:10px">Based in India • Open to freelance & practice projects</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <a class="btn btn-primary" href="#contact" onclick="scrollToId(event,'contact')">Contact</a>
+          <a class="btn btn-ghost" href="#projects" onclick="scrollToId(event,'projects')">Projects</a>
+        </div>
+      </aside>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>Hi — I’m ArianTechZone. I’m learning web development and building small, useful projects to grow my skills. This portfolio is a starting point to showcase sample projects and the progress I make. I enjoy clean UI, simple code, and solving real problems with web tools.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <div class="grid-3">
+        <article class="card" aria-labelledby="p1">
+          <div id="p1" class="project-title">Portfolio Website</div>
+          <div class="project-desc">A light, minimal single-file portfolio (this page). HTML, CSS, and small JS for smooth scrolling.</div>
+          <div class="project-links">
+            <a href="#" onclick="alert('Replace with your live link or GitHub repo')">Live</a>
+            <a href="#" onclick="alert('Replace with your GitHub link')">Code</a>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="p2">
+          <div id="p2" class="project-title">Todo App</div>
+          <div class="project-desc">A simple todo list that stores tasks in the browser. Great practice for DOM and state handling.</div>
+          <div class="project-links">
+            <a href="#" onclick="alert('Placeholder')">Live</a>
+            <a href="#" onclick="alert('Placeholder')">Code</a>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="p3">
+          <div id="p3" class="project-title">Weather App</div>
+          <div class="project-desc">Front-end app that fetches weather data from an API and displays current conditions and forecast.</div>
+          <div class="project-links">
+            <a href="#" onclick="alert('Placeholder')">Live</a>
+            <a href="#" onclick="alert('Placeholder')">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="skills" role="list">
+        <span class="skill" role="listitem">HTML</span>
+        <span class="skill" role="listitem">CSS</span>
+        <span class="skill" role="listitem">JavaScript</span>
+        <span class="skill" role="listitem">React (learning)</span>
+        <span class="skill" role="listitem">Node.js (learning)</span>
+        <span class="skill" role="listitem">Git & GitHub</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <div class="card contact-row" style="align-items:center;">
+        <div>
+          <div style="font-weight:800">Email</div>
+          <a class="email" href="mailto:ariantechzone@gmail.com">ariantechzone@gmail.com</a>
+          <div class="muted" style="margin-top:8px">Or reach out on GitHub / LinkedIn (links to add later).</div>
+        </div>
+
+        <div style="margin-left:auto;">
+          <div style="font-weight:700; margin-bottom:6px">Quick message</div>
+          <form onsubmit="handleContact(event)" style="display:flex;flex-direction:column;gap:8px;min-width:240px;">
+            <input id="name" required placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid #eef2f6" />
+            <input id="email" required placeholder="Your email" style="padding:10px;border-radius:8px;border:1px solid #eef2f6" />
+            <textarea id="message" required placeholder="Short message" rows="3" style="padding:10px;border-radius:8px;border:1px solid #eef2f6"></textarea>
+            <button class="btn btn-primary" type="submit">Send (opens email)</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Built by ArianTechZone • Light & Minimal portfolio — replace this content with your own.
+    </footer>
+  </div>
+
+  <script>
+    /* Smooth scroll helper */
+    function scrollToId(e, id) {
+      if (e) e.preventDefault();
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 20, behavior: 'smooth' });
+    }
+
+    /* Simple contact form behaviour:
+       Instead of sending to a server (you don't have one yet),
+       it opens the user's email client with a prefilled mailto link. */
+    function handleContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio Contact from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+      const to = 'ariantechzone@gmail.com';
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    /* Small accessibility: focus outline on keyboard nav */
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
